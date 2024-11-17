@@ -32,6 +32,11 @@ class ProvinceItems(db.Model):
     img_url = Column(String)
 
 
+@app.get("/")
+def test_app():
+    return <h1>Hello world</h1>
+
+
 @app.get("/get_province/")
 def get_province():
     try:
