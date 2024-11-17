@@ -6,6 +6,13 @@ import geopandas as gpd
 import pandas as pd
 from shapely import to_geojson
 from flask_cors import CORS
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+PORT = int(os.getenv("PORT", "8000"))
+
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
@@ -62,4 +69,5 @@ def get_province():
 
 if __name__ == "__main__":
     # app.run(host="127.0.0.1", port=8000, debug=True)
-    app.run(port=8000)
+    app.run(port=PORT)
+    print(f"listening on port {PORT}")
